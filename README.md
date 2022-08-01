@@ -7,3 +7,4 @@ Feita inteiramente na linguagem Java.<img src="https://cdn.jsdelivr.net/gh/devic
 -Fácil! olhe só:temos duas pastas: BIN e SRC.
 dentro da BIN, Se encontram os arquivos com terminação ".class", Logo, não recomendamos mecher lá. os arquivos ".java" se encontram na pasta SRC.
 Divirta-se com as suas peças!
+OBS: a pasta teste é realmente de testes, não tem nada necessário l
