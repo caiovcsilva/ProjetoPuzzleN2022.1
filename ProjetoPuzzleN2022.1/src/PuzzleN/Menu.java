@@ -33,7 +33,10 @@ public class Menu {
 	}
 	
 	public void opcoes() {
-
+		System.out.println("Altere a dificuldade do jogo! Escolha entre 1 a 3.");
+		Scanner sc= new Scanner(System.in);
+		this.dificuldade = sc.nextInt();
+		
 	}
 	
 	public void acessarCreditos() {

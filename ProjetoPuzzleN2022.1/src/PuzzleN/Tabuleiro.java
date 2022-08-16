@@ -6,21 +6,19 @@ public class Tabuleiro extends Menu{
 	
 	//tamanho de nosso tabuleiro. Nesse caso, no facil, um 3x3.
 	private int tamanhoTabuleiro = 3;
-	//Objeto que vamos usar para dispor as peças aleatorialmente no tabuleiro.
-	private static final Random rand = new Random();
 	//para saber quais peças estão em qual lugar.
 	private Peca [][] quadrados;
 	//quando o jogo acabar, é true.
 	private boolean fimDeJogo;
 	
-	
+	//Roda o metodo SetTamanhoTabuleiro e define o escopo do tabuleiro.
 	public Tabuleiro(int dificuldade) {
 		setTamanhoTabuleiro(dificuldade);
 		this.quadrados = new Peca[this.tamanhoTabuleiro][this.tamanhoTabuleiro];
 	}
 	
 	
-	
+	//Método que cria o tabuleiro, de acordo com a dificuldade que vai ser escolhida pelo usuario.
 	public void setTamanhoTabuleiro(int dificuldade) {
 		if ( dificuldade == 2) { 
 			++this.tamanhoTabuleiro;
@@ -30,7 +28,7 @@ public class Tabuleiro extends Menu{
 	}
 	
 
-	
+	//O iniciar, irá espalhar as peças, aleatoriamente, no tabuleiro; Se baseando na dificuldade escolhida para setar o seu
 	public void iniciar() {
 		int tabuleiroNxN = this.tamanhoTabuleiro*this.tamanhoTabuleiro;
 		Random valorRandomPecas = new Random();
