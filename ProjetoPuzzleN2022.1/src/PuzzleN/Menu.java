@@ -25,7 +25,7 @@ public class Menu {
 	
 	public void jogar() {
 		Tabuleiro jogoAtivo = new Tabuleiro(dificuldade);
-		jogoAtivo.iniciar();
+		jogoAtivo.iniciarTabuleiro();
 	}
 	
 	public void acessarRanking() {
