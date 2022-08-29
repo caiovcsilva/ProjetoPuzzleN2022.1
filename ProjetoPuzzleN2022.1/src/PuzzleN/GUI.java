@@ -23,6 +23,7 @@ public class GUI implements ActionListener{
 	private JLabel labelTitulo;
 	private JButton botaoIniciar;
 	private JButton botaoOpcoes;
+	private JButton botaoSair;
 	private JPanel panel;
 	Font tipoFonte;
 
@@ -51,19 +52,29 @@ public class GUI implements ActionListener{
 		labelTitulo.setFont(tipoFonte);
 		
 		//botao de INICIAR
-		botaoIniciar = new JButton("Iniciar");
+		botaoIniciar = new JButton(">Iniciar");
 		botaoIniciar.addActionListener(this);
 		botaoIniciar.setFont(tipoFonte);
 		botaoIniciar.setBackground(new Color(56,43,38));
 		botaoIniciar.setForeground(new Color(184,194,185));
 		
 		//BOTAO DE OPCOES
-		botaoOpcoes = new JButton("Opcoes");
+		botaoOpcoes = new JButton(">Opcoes");
 		botaoOpcoes.addActionListener(this);
 		botaoOpcoes.setBackground(new Color(56,43,38));
 		botaoOpcoes.setForeground(new Color(184,194,185));
 		botaoOpcoes.setFont(tipoFonte);
 		
+		//BOTAO DE SAIR
+		botaoSair = new JButton(">Sair");
+		botaoSair.addActionListener(this);
+		botaoSair.setBackground(new Color(56,43,38));
+		botaoSair.setForeground(new Color(184,194,185));
+		botaoSair.setFont(tipoFonte);
+		
+		
+		
+		//Faz os botoes e etc aparecerem na tela.
 		panel = new JPanel();
 		panel.setBorder(BorderFactory.createEmptyBorder(300, 300, 300 , 300));
 		panel.setLayout(new GridLayout(0, 1));
@@ -71,12 +82,12 @@ public class GUI implements ActionListener{
 		panel.add(labelTitulo);
 		panel.add(botaoIniciar);
 		panel.add(botaoOpcoes);
+		panel.add(botaoSair);
 
 		
 		window.add(panel, BorderLayout.CENTER);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setTitle("One bit- Puzzle N!");
-		//window.setFont(fontePixelada);
 		window.pack();
 		window.setVisible(true);
 	}
