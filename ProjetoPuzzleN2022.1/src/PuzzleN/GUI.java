@@ -43,20 +43,26 @@ public class GUI implements ActionListener{
 			e.printStackTrace();
 		}
 		
-		
-		
-		
+		//TITULO DO JOGO
 		labelTitulo = new JLabel(" OneBit Puzzle N!");
 		labelTitulo.setOpaque(true);
 		labelTitulo.setForeground(new Color(184,194,185));
 		labelTitulo.setBackground(new Color(56,43,38 ));
 		labelTitulo.setFont(tipoFonte);
 		
-		
+		//botao de INICIAR
 		botaoIniciar = new JButton("Iniciar");
 		botaoIniciar.addActionListener(this);
+		botaoIniciar.setFont(tipoFonte);
+		botaoIniciar.setBackground(new Color(56,43,38));
+		botaoIniciar.setForeground(new Color(184,194,185));
+		
+		//BOTAO DE OPCOES
 		botaoOpcoes = new JButton("Opcoes");
 		botaoOpcoes.addActionListener(this);
+		botaoOpcoes.setBackground(new Color(56,43,38));
+		botaoOpcoes.setForeground(new Color(184,194,185));
+		botaoOpcoes.setFont(tipoFonte);
 		
 		panel = new JPanel();
 		panel.setBorder(BorderFactory.createEmptyBorder(300, 300, 300 , 300));
