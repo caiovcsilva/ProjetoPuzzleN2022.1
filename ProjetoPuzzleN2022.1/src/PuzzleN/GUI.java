@@ -1,14 +1,14 @@
 package PuzzleN;
 
-
-import fontsAndImages.Fonts;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -24,20 +24,33 @@ public class GUI implements ActionListener{
 	private JButton botaoIniciar;
 	private JButton botaoOpcoes;
 	private JPanel panel;
-	Fonts tipoFonte;
+	Font tipoFonte;
 
 	public GUI() {
 		window = new JFrame();
 		//window.getContentPane().setBackground(new Color(51,51,25));
 		
-		tipoFonte = new Fonts();
+		//Isso tudo só pra fonte diferenciada.
+		try {
+		InputStream is = getClass().getResourceAsStream("/fontsAndImages/04B_30__.ttf");
+		tipoFonte = Font.createFont(Font.TRUETYPE_FONT, is);
+		//necessario colocar o F por problemas de overflow. Levando em conta que queremos trabalhar com um float.
+		tipoFonte = tipoFonte.deriveFont(50f);
+		is= getClass().getResourceAsStream("/fontAndImages/04B_30__.ttf");
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		
 		labelTitulo = new JLabel(" OneBit Puzzle N!");
 		labelTitulo.setOpaque(true);
 		labelTitulo.setForeground(new Color(184,194,185));
 		labelTitulo.setBackground(new Color(56,43,38 ));
-		labelTitulo.setFont(tipoFonte.fonte(tipoFonte.pixel, 0, 14));
-		
+		labelTitulo.setFont(tipoFonte);
 		
 		
 		botaoIniciar = new JButton("Iniciar");
