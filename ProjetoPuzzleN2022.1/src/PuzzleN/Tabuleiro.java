@@ -58,7 +58,7 @@ public class Tabuleiro{
         public int getVazio() {//encontra e retorna o valor do valor vazio do tabuleiro.
         	int pos = 0;
     		for(int i = 0; i < this.listaPecas.length; i++) {
-    			if(listaPecas[i].equals("[ ]")) {
+    			if(listaPecas[i].equals("  ")) {
     				pos = i;
     			}
     		}
