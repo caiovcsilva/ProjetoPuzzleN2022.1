@@ -9,7 +9,7 @@ public class Tabuleiro{
 	protected String[] listaPecas;
 	protected String[][] matrizPecas;
 		
-    public Tabuleiro(int tamanho){//construtor do método.
+    public Tabuleiro(int tamanho){
 	setMatriz(tamanho);
 }
     
@@ -17,8 +17,13 @@ public class Tabuleiro{
     	return this.tamanho;
     }
     
-	public void setMatriz(int tamanho) { //define o tamanho da matriz do tabuleiro.
+	public void setMatriz(int tamanho) {
 		if(tamanho == 3) {
+			this.tamanho = tamanho;
+		}if(tamanho == 2) {
+			this.tamanho = tamanho;
+		}
+		if(tamanho == 4) {
 			this.tamanho = tamanho;
 		}
 	}
@@ -34,8 +39,8 @@ public class Tabuleiro{
 		this.matrizPecas = tabuleiro;
 	}
         
-        public void preencheArray() { //Cria uma array com os valores do tabuleiro.
-		String[] tempArray = new String[this.tamanho*this.tamanho]; //array que armazena a ordem dos elementos.
+        public void preencheArray() {
+		String[] tempArray = new String[this.tamanho*this.tamanho]; 
 		for(int i = 0; i < this.tamanho*this.tamanho; i++) {
 			tempArray[i] = String.valueOf(i + 1);
 		}
@@ -43,7 +48,7 @@ public class Tabuleiro{
 		listaPecas[listaPecas.length - 1] = "  ";
 	}
         
-        public void preencheMatriz() {//Cria uma array bidimensional para o tabuleiro.
+        public void preencheMatriz() {
     		int var = 0;
     		String[][] inter = new String[this.tamanho][this.tamanho];
             for(int i = 0; i < this.tamanho; i++) {
@@ -55,7 +60,7 @@ public class Tabuleiro{
             this.matrizPecas = inter;
     	}
         
-        public int getVazio() {//encontra e retorna o valor do valor vazio do tabuleiro.
+        public int getVazio() {
         	int pos = 0;
     		for(int i = 0; i < this.listaPecas.length; i++) {
     			if(listaPecas[i].equals("  ")) {
@@ -65,13 +70,13 @@ public class Tabuleiro{
     		return pos;
         }
 	
-        public void embaralhaArray() { //embaralha a lista 
-            List<String> list =Arrays.asList(this.listaPecas); //embaralha o array que contém as pecas
+        public void embaralhaArray() {
+            List<String> list =Arrays.asList(this.listaPecas); 
             Collections.shuffle(list);
             list.toArray(this.listaPecas);
     	}
 	
-        public void exibeTabuleiro() { //Printa na tela os numeros da array em forma de uma matriz.
+        public void exibeTabuleiro() {
         for(int i = 0; i < this.tamanho; i++) {
             for(int j = 0; j < this.tamanho; j++) {
                 System.out.print(this.matrizPecas[i][j] + "\t"); 
@@ -80,7 +85,7 @@ public class Tabuleiro{
             }
 	}
         
-	public void misturaArray() { //comando que embaralha a lista
+	public void misturaArray() {
         List<String> list =Arrays.asList(this.listaPecas); 
         Collections.shuffle(list);
         list.toArray(this.listaPecas);
@@ -98,7 +103,7 @@ public class Tabuleiro{
 		
 		for(int i = 0; i < this.tamanho; i++) {
             for(int k = 0; k < this.tamanho; k++) {
-                matrizCorreta[i][k] = listaPecas[contador]; //escreve no console enquanto não há interface
+                matrizCorreta[i][k] = listaPecas[contador];
                 contador++;
             }
         }

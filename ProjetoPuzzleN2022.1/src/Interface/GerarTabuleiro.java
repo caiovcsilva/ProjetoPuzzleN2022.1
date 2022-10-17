@@ -45,6 +45,7 @@ public class GerarTabuleiro extends JPanel implements ActionListener{
 		this.tabuleiro = tab;
 		this.botaoAjuda = new JButton("Ajuda");
 		this.voltar = new JButton("Voltar");
+	    fimDeJogo = false;
 		
 		
 		add(botaoAjuda);
@@ -58,13 +59,7 @@ public class GerarTabuleiro extends JPanel implements ActionListener{
 	    setBackground(Color.LIGHT_GRAY);
 	    setForeground(CorPecinha);
 	    
-	    //Tentei fazer a fonte funcionar com o Graphics2D, mas ainda não consegui. Caio, pode dar uma olhada?
-	    setFont(new Font("minecraftFontBold", Font.PLAIN, 40));
-	    
-	    fimDeJogo = false;
-	    
 	 
-	    //Interação do jogo com os cliques do usuário. Também bugado.
 	    addMouseListener(new MouseAdapter() {
 	        @Override
 	        public void mousePressed(MouseEvent e) {
@@ -73,12 +68,11 @@ public class GerarTabuleiro extends JPanel implements ActionListener{
 	            novoJogo();
 	            
 	          } else {
-	        	  
-	            // posição do clique
+
 	            int eixoX = e.getX() - margem;
 	            int eixoY = e.getY() - margem;
 	            
-	            // verifica se teve um clique.
+	            // verifica se teve uma instancia de clique, e logo em seguida retorna.
 	            if (eixoX < 0 || eixoX > tamanhoMatriz  || eixoY < 0  || eixoY > tamanhoMatriz)
 	              return;
 	            
@@ -86,34 +80,35 @@ public class GerarTabuleiro extends JPanel implements ActionListener{
 	            int yClique = eixoX / tamanhoPeca;
 	            int xClique = eixoY / tamanhoPeca;
 	            
-	            // definicao da posição da peça vazia.
+	            // setando a posição da peça vazia(que será printada no tabuleiro).
 	            int yVazio = tabuleiro.getVazio() % tamanho;
 	            int xVazio = tabuleiro.getVazio() / tamanho;
 	            
-	            
-	            if(xClique == xVazio - 1 && yClique == yVazio) {
-	            	tabuleiro.mexeBaixo();
-	            }
-	            else if(xClique == xVazio + 1 && yClique == yVazio) {
+	            if(xClique == xVazio + 1 && yClique == yVazio) {
 	            	tabuleiro.mexeCima();
 	            }
-	            else if(xClique == xVazio && yClique == yVazio - 1) {
-	            	tabuleiro.mexeDireita();
+	            else if(xClique == xVazio - 1 && yClique == yVazio) {
+	            	tabuleiro.mexeBaixo();
 	            }
 	            else if(xClique == xVazio && yClique == yVazio + 1) {
 	            	tabuleiro.mexeEsquerda();
 	            }
+	            else if(xClique == xVazio && yClique == yVazio - 1) {
+	            	tabuleiro.mexeDireita();
+	            }
+
 	            
 	            fimDeJogo = tabuleiro.terminaJogo();
 	            
 	          }
 	          
-	          // repinta o tabuleiro na tela.
+	          //funão do java AWT que faz refresh da tela, movendo as peças e trocando as cores das peças certas na interface. 
 	          repaint();
 	        }
 	      });
-	    novoJogo();
-	}
+	    
+	    
+	    novoJogo();}
 	
 	
 	private void novoJogo() {
@@ -134,7 +129,7 @@ public class GerarTabuleiro extends JPanel implements ActionListener{
 	      int x = margem + c * tamanhoPeca;
 	      int y = margem + r * tamanhoPeca;
 	      
-	   // verifica a peça vazia para saber se o jogo terminou.
+	   //Para saber se o jogo acabou ou não.
 	      if(tabuleiro.getListaPecas()[i].equals("  ")) {
 	        if (fimDeJogo) { 
 	          g.setColor(Color.white);
@@ -143,7 +138,6 @@ public class GerarTabuleiro extends JPanel implements ActionListener{
 	        continue;
 	      }
 	      
-	      // organizar/posicionar as peças.
 	      if(tabuleiro.getListaPecas()[i].equals(tabuleiro.getListaCorreta()[i])) {
 	    	  g.setColor(CorPecinhaCerta); //destaca as peças na posição correta.
 	      }
@@ -164,7 +158,7 @@ public class GerarTabuleiro extends JPanel implements ActionListener{
 	    if (fimDeJogo) {
 	      g.setFont(getFont().deriveFont(Font.BOLD, 18));
 	      g.setColor(Color.WHITE);
-	      String s = "PARABENS! VOCE GANHOU!";
+	      String s = "Parabens, Você venceu!!";
 	      g.drawString(s, (getWidth() - g.getFontMetrics().stringWidth(s)) / 2,
 	          getHeight() - margem);
 	    }
@@ -193,7 +187,6 @@ public class GerarTabuleiro extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 
 		if(e.getSource()==botaoAjuda) {
-			//Colocamos um popup com imagem resolvido do jogo?
 		}		
 		
 	}

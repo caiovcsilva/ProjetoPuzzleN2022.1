@@ -13,15 +13,18 @@ import Interface.Jogando;
 
 
 public class MenuInter extends JFrame implements ActionListener {
-	
+	private int dificuldade=3;
     JButton botaoIniciar = new JButton("Iniciar!");
     JButton botaoOpcoes = new JButton("Config!");
     JButton botaoRanking = new JButton("Ranking!");
     JButton botaoSair = new JButton("Sair!");
     JLabel Titulo= new JLabel("Puzzle N!");
    
+    
+   
     public MenuInter() {
     	
+
     	setTitle("Puzzle N- Caio e Sérgio");
     	setSize(500,500);
 
@@ -49,7 +52,6 @@ public class MenuInter extends JFrame implements ActionListener {
     	add(botaoSair);
 		botaoSair.setBounds(200,411,313,50);
         
-        
 		botaoIniciar.addActionListener(this);
 		botaoOpcoes.addActionListener(this);
 		botaoRanking.addActionListener(this);
@@ -61,11 +63,13 @@ public class MenuInter extends JFrame implements ActionListener {
 		if(e.getSource()==botaoIniciar) {
 			this.dispose();
 			Jogando jogando = new Jogando();
-			jogando.jogando(3);
+			jogando.jogando(dificuldade);
 		}
 		
 		else if(e.getSource()==botaoOpcoes) {
 			this.dispose();
+			Opcoes menuOpcoes =new Opcoes();
+			menuOpcoes.Opcoes();
 			
 		}
 		
@@ -77,7 +81,6 @@ public class MenuInter extends JFrame implements ActionListener {
 		else if(e.getSource()==botaoSair) {
 			System.exit(0);
 		}
-		
 	}
-}
+	}
 
